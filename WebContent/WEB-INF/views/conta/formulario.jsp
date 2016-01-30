@@ -8,12 +8,14 @@
 </head>
 <body>
 	<h3>Adicionar Contas</h3>
+	<p>Bem vindo, ${usuarioLogado.login}</p>
 	<form action="adicionaConta" method="post">
 		Descrição: <br />
 		<textarea name="descricao" rows="5" cols="50"></textarea>
 		<br /> 
 		<form:errors path="conta.descricao"/><br/>
-		Valor: <br /> <input type="text" name="valor"/><br /> 
+		Valor: <br /> <input type="number" step="00.01" name="valor" /><br /> 
+		<form:errors path="conta.valor"/><br/>
 		Tipo: <br />
 		<select name="tipo">
 			<option value="ENTRADA">Entrada</option>
@@ -21,6 +23,8 @@
 		</select> <br />
 		<br /> <input type="submit" value="Adicionar" />
 	</form>
-
+	<form action="menu">
+		<br /> <input type="submit" value="Inicio" />
+	</form>
 </body>
 </html>

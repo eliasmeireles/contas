@@ -16,13 +16,14 @@ public class InfraController {
 		System.out.println("funcionando!");
 		
 		Connection c = new ConnectionFactory().getConnection();
-		PreparedStatement st1 = c.prepareStatement("drop table contas if exists");
+		PreparedStatement st1 = c.prepareStatement("drop table if exists contas");
 		st1.execute();
 
-		PreparedStatement st11 = c.prepareStatement("create table contas (id int identity, descricao varchar(255), valor double, paga boolean, dataPagamento datetime, tipo varchar(20))");
+		System.out.println(c);
+		PreparedStatement st11 = c.prepareStatement("create table contas (id int unique primary key auto_increment, descricao varchar(255), valor double, paga boolean, dataPagamento datetime, tipo varchar(20))");
 		st11.execute();
 		
-		PreparedStatement st2 = c.prepareStatement("drop table usuarios if exists");
+		PreparedStatement st2 = c.prepareStatement("drop table if exists usuarios ");
 		st2.execute();
 
 		PreparedStatement st22 = c.prepareStatement("create table usuarios (login VARCHAR(255),senha VARCHAR(255));");

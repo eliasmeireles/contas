@@ -11,12 +11,10 @@ public class ConnectionFactory {
 		System.out.println("conectando ...");
 
 		try {
-			Class.forName("org.hsqldb.jdbcDriver");
+			Class.forName("com.mysql.jdbc.Driver");
 		} catch (ClassNotFoundException e) {
 			throw new SQLException(e);
 		}
-		
-		return DriverManager.getConnection("jdbc:hsqldb:file:contas.db","sa", "");
+		return DriverManager.getConnection("jdbc:mysql://localhost/contas", "root", "root");
 	}
-
 }

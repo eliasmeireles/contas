@@ -7,6 +7,10 @@
 <title>Caelum</title>
 </head>
 <body>
+<p>Bem vindo, ${usuarioLogado.login}</p>
 Tabelas criadas com sucesso!
 </body>
+<form action="menu">
+	<br /> <input type="submit" value="Inicio" />
+	</form>
 </html>

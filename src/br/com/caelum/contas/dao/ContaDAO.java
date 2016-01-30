@@ -9,20 +9,26 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-import br.com.caelum.contas.ConnectionFactory;
+import javax.sql.DataSource;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
 import br.com.caelum.contas.modelo.Conta;
 import br.com.caelum.contas.modelo.TipoDaConta;
 
+@Repository
 public class ContaDAO {
 	private Connection connection;
 
-	public ContaDAO() {
-		try {
-			this.connection = new ConnectionFactory().getConnection();
-		} catch (SQLException e) {
-			throw new RuntimeException(e);
-		}
-	}
+	  @Autowired
+	  public ContaDAO(DataSource source) {
+	    try {
+	      this.connection = source.getConnection();
+	    } catch(SQLException e) {
+	      throw new RuntimeException(e);
+	    }
+	  }
 
 	public void adiciona(Conta conta) {
 		String sql = "insert into contas (descricao, paga, valor, tipo) values (?,?,?,?)";
